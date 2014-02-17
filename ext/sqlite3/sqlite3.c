@@ -14,17 +14,10 @@ int bignum_to_int64(VALUE value, sqlite3_int64 *result)
   case -2: case +2:
     return 0;
   case +1:
-    if (!nails) {
-      if (*result < 0) return 0;
-    }
+    if (*result < 0) return 0;
     break;
   case -1:
-    if (!nails) {
-      if (*result >= 0) return 0;
-    }
-    else {
-      *result += INT64_MIN;
-    }
+    if (*result >= 0) return 0;
     break;
   }
   return 1;
